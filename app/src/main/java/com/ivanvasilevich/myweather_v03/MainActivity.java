@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//Вдохновленный работами одногрупников переделал свой проект в третий раз
+//Вдохновленный работой Андрея переделал свой проект в третий раз
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout todayLayout;
