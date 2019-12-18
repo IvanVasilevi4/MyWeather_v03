@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -18,10 +19,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button butToday;
     private Button butMonday;
     private Button butTuesday;
+    private EditText city;
     //ключ для сохранения нажатия на кнопку для дня(сегодня, понед, вт)
     private static final String KEY_BUTTON = "on";
     //счетчик для сохранения нажатия на кнопку для дня(сегодня, понед, вт)
     private int countButton = 0;
+    private String editCity = "Moscow";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butMonday.setOnClickListener(this);
         butTuesday = findViewById(R.id.but_tue);
         butTuesday.setOnClickListener(this);
+
+        city = findViewById(R.id.city);
     }
 
     public void onClick(View v) {
