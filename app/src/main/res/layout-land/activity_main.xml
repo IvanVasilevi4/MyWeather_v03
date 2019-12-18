@@ -12,6 +12,7 @@
         android:weightSum="10">
 
         <EditText
+            android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
