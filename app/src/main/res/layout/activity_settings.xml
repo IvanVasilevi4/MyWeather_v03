@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/back_pic_settings"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/winter"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/checkBoxWind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wind speed"
+            android:textSize="18sp"
+            android:background="#4000"
+            android:textColor="#ffff"
+            android:buttonTint="#ffff"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atmosphere pressure"
+            android:textSize="18sp"
+            android:background="#4000"
+            android:textColor="#ffff"
+            android:buttonTint="#ffff"/>
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            />
+    </LinearLayout>
+</FrameLayout>
