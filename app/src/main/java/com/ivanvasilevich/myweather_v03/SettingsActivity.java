@@ -15,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String KEY_CHECKBOX2 = "check2";
     private int countCheckBox = 0;
     private int countCheckBox2 = 0;
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
