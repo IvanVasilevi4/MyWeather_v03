@@ -99,7 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ImageView imageWind = findViewById(R.id.imageWind);
                 TextView textWind = findViewById(R.id.textWind);
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                //boolean ch = getIntent().getBooleanExtra()
                 //intent.putExtra("c",imageWind.getVisibility());
+                intent.putExtra("countWind", countWind);
+                intent.putExtra("countPressure",countPressure);
                 startActivityForResult(intent, REQUEST_CODE);
         }
     }
