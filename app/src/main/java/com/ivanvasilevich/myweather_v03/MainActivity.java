@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,13 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setLayoutVisibility(View.VISIBLE, View.GONE, View.GONE);
 
-        ImageView imageWind = findViewById(R.id.imageWind);
+        setSettingsVisibility((LinearLayout) findViewById(R.id.wind_container), countWind);
+        setSettingsVisibility((LinearLayout) findViewById(R.id.pressure_container), countPressure);
+        /*ImageView imageWind = findViewById(R.id.imageWind);
         TextView textWind = findViewById(R.id.textWind);
         setSettingsVisibility(imageWind, textWind, countWind);
 
         ImageView imagePressure = findViewById(R.id.imagePressure);
         TextView textPressure = findViewById(R.id.textPressure);
-        setSettingsVisibility(imagePressure, textPressure, countPressure);
+        setSettingsVisibility(imagePressure, textPressure, countPressure);*/
 
         butToday = findViewById(R.id.but_today);
         butToday.setOnClickListener(this);
@@ -96,11 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 countButton = 2;
                 break;
             case R.id.settings:
-                ImageView imageWind = findViewById(R.id.imageWind);
-                TextView textWind = findViewById(R.id.textWind);
+                /*ImageView imageWind = findViewById(R.id.imageWind);
+                TextView textWind = findViewById(R.id.textWind);*/
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                //boolean ch = getIntent().getBooleanExtra()
-                //intent.putExtra("c",imageWind.getVisibility());
                 intent.putExtra("countWind", countWind);
                 intent.putExtra("countPressure",countPressure);
                 startActivityForResult(intent, REQUEST_CODE);
@@ -124,17 +122,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butTuesday.setBackgroundColor(getResources().getColor(p3));
     }
 
-    //начальное отображение/сокрытие данных
-    private void setSettingsVisibility(ImageView image, TextView text, int count) {
+    //начальное отображение/сокрытие данных+ при повороте экрана
+    private void setSettingsVisibility(LinearLayout container, int count) {
+        container.setVisibility((count == 0) ? View.GONE : View.VISIBLE);
+    }
+   /* private void setSettingsVisibility(ImageView image, TextView text, int count) {
         if (count == 0){
         image.setVisibility(View.GONE);
         text.setVisibility(View.GONE);}
         else {image.setVisibility(View.VISIBLE);
             text.setVisibility(View.VISIBLE);}
-    }
+    }*/
 
     //проверка на видимость при повороте экрана
-    private void checkedVisibility(ImageView image, TextView text, int count) {
+    /*private void checkedVisibility(LinearLayout container, int count) {
+        container.setVisibility(count == 0 ? View.GONE : View.VISIBLE);
+    }*/
+    /*private void checkedVisibility(ImageView image, TextView text, int count) {
         if (count == 0) {
             image.setVisibility(View.GONE);
             text.setVisibility(View.GONE);
@@ -142,12 +146,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             image.setVisibility(View.VISIBLE);
             text.setVisibility(View.VISIBLE);
         }
-    }
+    }*/
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             //checkBox отображает/скрывает параметры ветра
-            ImageView imageWind = findViewById(R.id.imageWind);
+            LinearLayout windContainer = findViewById(R.id.wind_container);
+            boolean checked = data.getBooleanExtra("a", false);
+            windContainer.setVisibility(checked ? View.VISIBLE : View.GONE);
+            countWind = checked ? 1 : 0;
+            /*ImageView imageWind = findViewById(R.id.imageWind);
             TextView textWind = findViewById(R.id.textWind);
             boolean checked = data.getBooleanExtra("a", false);
             if (checked) {
@@ -158,9 +166,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageWind.setVisibility(View.GONE);
                 textWind.setVisibility(View.GONE);
                 countWind = 0;
-            }
+            }*/
             //checkBox отображает/скрывает параметры давления
-            ImageView imagePressure = findViewById(R.id.imagePressure);
+            LinearLayout pressureContainer = findViewById(R.id.pressure_container);
+            boolean checked2 = data.getBooleanExtra("b", false);
+            pressureContainer.setVisibility(checked2 ? View.VISIBLE : View.GONE);
+            countPressure = checked2 ? 1 : 0;
+            /*ImageView imagePressure = findViewById(R.id.imagePressure);
             TextView textPressure = findViewById(R.id.textPressure);
             boolean checked2 = data.getBooleanExtra("b", false);
             if (checked2) {
@@ -171,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imagePressure.setVisibility(View.GONE);
                 textPressure.setVisibility(View.GONE);
                 countPressure = 0;
-            }
+            }*/
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -196,13 +208,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             onClick(butTuesday);
         }
         countWind = saveInstState.getInt(KEY_WIND);
-        ImageView imageWind = findViewById(R.id.imageWind);
+        setSettingsVisibility((LinearLayout) findViewById(R.id.wind_container), countWind);
+        countPressure = saveInstState.getInt(KEY_PRESSURE);
+        setSettingsVisibility((LinearLayout) findViewById(R.id.pressure_container), countPressure);
+        /*ImageView imageWind = findViewById(R.id.imageWind);
         TextView textWind = findViewById(R.id.textWind);
         checkedVisibility(imageWind, textWind, countWind);
         countPressure = saveInstState.getInt(KEY_PRESSURE);
         ImageView imagePressure = findViewById(R.id.imagePressure);
         TextView textPressure = findViewById(R.id.textPressure);
-        checkedVisibility(imagePressure, textPressure, countPressure);
+        checkedVisibility(imagePressure, textPressure, countPressure);*/
     }
 
     @Override

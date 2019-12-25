@@ -25,32 +25,38 @@ public class SettingsActivity extends AppCompatActivity {
         checkBoxPressure = findViewById(R.id.checkBoxPressure);
 
         int countWind = getIntent().getIntExtra("countWind",-1);
-        if(countWind == 0){
+        checkBoxWind.setChecked((countWind == 0) ? false : true);
+        countCheckBox = (countWind == 0) ? 0 : 1;
+        /*if(countWind == 0){
             checkBoxWind.setChecked(false);
             countCheckBox = 0;
         } else {checkBoxWind.setChecked(true);
-            countCheckBox = 1;}
+            countCheckBox = 1;}*/
 
         int countPressure = getIntent().getIntExtra("countPressure",-1);
-        if(countPressure == 0){
+        checkBoxPressure.setChecked((countPressure == 0) ? false : true);
+        countCheckBox2 = (countPressure == 0) ? 0 : 1;
+        /*if(countPressure == 0){
             checkBoxPressure.setChecked(false);
             countCheckBox2 = 0;
         } else {checkBoxPressure.setChecked(true);
-            countCheckBox2 = 1;}
+            countCheckBox2 = 1;}*/
 
         checkBoxWind.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {countCheckBox = 1;}
-                else {countCheckBox = 0;}
+                countCheckBox = isChecked ? 1 : 0;
+                /*if(isChecked) {countCheckBox = 1;}
+                else {countCheckBox = 0;}*/
             }
         });
 
         checkBoxPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {countCheckBox2 = 1;}
-                else {countCheckBox2 = 0;}
+                countCheckBox2 = isChecked ? 1 : 0;
+                /*if(isChecked) {countCheckBox2 = 1;}
+                else {countCheckBox2 = 0;}*/
             }
         });
 
@@ -76,11 +82,13 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle saveInstState) {
         super.onRestoreInstanceState(saveInstState);
         countCheckBox = saveInstState.getInt(KEY_CHECKBOX);
-        if (countCheckBox == 0) checkBoxWind.setChecked(false);
-        else checkBoxWind.setChecked(true);
+        checkBoxWind.setChecked((countCheckBox == 0) ? false : true);
+        /*if (countCheckBox == 0) checkBoxWind.setChecked(false);
+        else checkBoxWind.setChecked(true);*/
         countCheckBox2 = saveInstState.getInt(KEY_CHECKBOX2);
-        if (countCheckBox2 == 0) checkBoxPressure.setChecked(false);
-        else checkBoxPressure.setChecked(true);
+        checkBoxPressure.setChecked((countCheckBox2 == 0) ? false : true);
+        /*if (countCheckBox2 == 0) checkBoxPressure.setChecked(false);
+        else checkBoxPressure.setChecked(true);*/
     }
 
 }
