@@ -53,13 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setSettingsVisibility((LinearLayout) findViewById(R.id.wind_container), countWind);
         setSettingsVisibility((LinearLayout) findViewById(R.id.pressure_container), countPressure);
-        /*ImageView imageWind = findViewById(R.id.imageWind);
-        TextView textWind = findViewById(R.id.textWind);
-        setSettingsVisibility(imageWind, textWind, countWind);
-
-        ImageView imagePressure = findViewById(R.id.imagePressure);
-        TextView textPressure = findViewById(R.id.textPressure);
-        setSettingsVisibility(imagePressure, textPressure, countPressure);*/
 
         butToday = findViewById(R.id.but_today);
         butToday.setOnClickListener(this);
@@ -96,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 countButton = 2;
                 break;
             case R.id.settings:
-                /*ImageView imageWind = findViewById(R.id.imageWind);
-                TextView textWind = findViewById(R.id.textWind);*/
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 intent.putExtra("countWind", countWind);
                 intent.putExtra("countPressure",countPressure);
@@ -126,27 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setSettingsVisibility(LinearLayout container, int count) {
         container.setVisibility((count == 0) ? View.GONE : View.VISIBLE);
     }
-   /* private void setSettingsVisibility(ImageView image, TextView text, int count) {
-        if (count == 0){
-        image.setVisibility(View.GONE);
-        text.setVisibility(View.GONE);}
-        else {image.setVisibility(View.VISIBLE);
-            text.setVisibility(View.VISIBLE);}
-    }*/
-
-    //проверка на видимость при повороте экрана
-    /*private void checkedVisibility(LinearLayout container, int count) {
-        container.setVisibility(count == 0 ? View.GONE : View.VISIBLE);
-    }*/
-    /*private void checkedVisibility(ImageView image, TextView text, int count) {
-        if (count == 0) {
-            image.setVisibility(View.GONE);
-            text.setVisibility(View.GONE);
-        } else {
-            image.setVisibility(View.VISIBLE);
-            text.setVisibility(View.VISIBLE);
-        }
-    }*/
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -155,35 +125,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             boolean checked = data.getBooleanExtra("a", false);
             windContainer.setVisibility(checked ? View.VISIBLE : View.GONE);
             countWind = checked ? 1 : 0;
-            /*ImageView imageWind = findViewById(R.id.imageWind);
-            TextView textWind = findViewById(R.id.textWind);
-            boolean checked = data.getBooleanExtra("a", false);
-            if (checked) {
-                imageWind.setVisibility(View.VISIBLE);
-                textWind.setVisibility(View.VISIBLE);
-                countWind = 1;
-            } else {
-                imageWind.setVisibility(View.GONE);
-                textWind.setVisibility(View.GONE);
-                countWind = 0;
-            }*/
+
             //checkBox отображает/скрывает параметры давления
             LinearLayout pressureContainer = findViewById(R.id.pressure_container);
             boolean checked2 = data.getBooleanExtra("b", false);
             pressureContainer.setVisibility(checked2 ? View.VISIBLE : View.GONE);
             countPressure = checked2 ? 1 : 0;
-            /*ImageView imagePressure = findViewById(R.id.imagePressure);
-            TextView textPressure = findViewById(R.id.textPressure);
-            boolean checked2 = data.getBooleanExtra("b", false);
-            if (checked2) {
-                imagePressure.setVisibility(View.VISIBLE);
-                textPressure.setVisibility(View.VISIBLE);
-                countPressure = 1;
-            } else {
-                imagePressure.setVisibility(View.GONE);
-                textPressure.setVisibility(View.GONE);
-                countPressure = 0;
-            }*/
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -211,13 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSettingsVisibility((LinearLayout) findViewById(R.id.wind_container), countWind);
         countPressure = saveInstState.getInt(KEY_PRESSURE);
         setSettingsVisibility((LinearLayout) findViewById(R.id.pressure_container), countPressure);
-        /*ImageView imageWind = findViewById(R.id.imageWind);
-        TextView textWind = findViewById(R.id.textWind);
-        checkedVisibility(imageWind, textWind, countWind);
-        countPressure = saveInstState.getInt(KEY_PRESSURE);
-        ImageView imagePressure = findViewById(R.id.imagePressure);
-        TextView textPressure = findViewById(R.id.textPressure);
-        checkedVisibility(imagePressure, textPressure, countPressure);*/
     }
 
     @Override
