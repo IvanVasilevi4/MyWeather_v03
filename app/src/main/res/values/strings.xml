@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MyWeather_v03</string>
+
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>Saint-Petersburg</item>
+        <item>Novosibirsk</item>
+        <item>Kazan</item>
+        <item>Permian</item>
+        <item>Nizhny Novgorod</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
