@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 countButton = 2;
                 break;
             case R.id.settings:
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                //изменил эту строку , когда заменял активити настройки на фрагменты
+                Intent intent =
+                        new Intent(MainActivity.this, SettingsFragmentActivity.class);
                 intent.putExtra("countWind", countWind);
                 intent.putExtra("countPressure",countPressure);
                 startActivityForResult(intent, REQUEST_CODE);
